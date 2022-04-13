@@ -1,0 +1,25 @@
+.navbar-light{
+    background-color: #F9DCC4;
+}
+
+.navbar-light .navbar-brand{
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #e38978;
+}
+.navbar-light .navbar-nav .nav-link{
+    font-size: 1.2rem;
+    color: #e38978;
+}
+
+.navbar-collapse{
+    flex-grow: 0;
+}
+
+
+.btn.btn-primary{
+    background-color: #e38978;
+    color: #F9DCC4;
+    border: none;
+    margin: 0 5px;
+}

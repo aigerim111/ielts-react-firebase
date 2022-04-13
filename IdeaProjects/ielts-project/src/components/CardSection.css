@@ -1,0 +1,36 @@
+.container-card-section{
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.card{
+    height: 100%;
+    box-shadow: 0 1px 10px 1px rgba(34, 60, 80, 0.2);
+}
+
+.card-title{
+    color: #e38978;
+}
+
+.container-card-section .col{
+    margin-top: 2rem;
+}
+
+.list-group{
+    margin: 1.5rem 1rem 1rem 1rem;
+    flex-wrap: wrap;
+    color: #333;
+}
+
+.list-group > *{
+    font-size: 1rem;
+    max-width: 30%;
+    min-height: 4rem;
+}
+
+@media (max-width: 1200px) {
+
+    .list-group > *{
+        font-size: .8rem;
+    }
+}
