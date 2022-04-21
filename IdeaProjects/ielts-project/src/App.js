@@ -12,6 +12,7 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { fas } from '@fortawesome/free-solid-svg-icons'
 import RegistrationPage from "./pages/RegistrationPage";
 import LoginPage from "./pages/LoginPage";
+import PersonalPage from "./pages/PersonalPage";
 
 library.add(fas)
 
@@ -30,6 +31,7 @@ function App() {
               <Route path='/speaking' exact element={Speaking} />
               <Route exact path='/register' element={<RegistrationPage />} />
               <Route exact path='/signin' element={<LoginPage />} />
+              <Route exact path='/userpage' element={<PersonalPage />} />
           </Routes>
       </Router>
     </>

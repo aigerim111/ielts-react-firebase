@@ -17,9 +17,6 @@ function RegistrationPage(){
 
     function register(){
         registerWithEmailAndPassword(registerName, registerEmail, registerPassword)
-            .then(r => console.log(r.body));
-        console.log(auth);
-
         navigate("/")
     }
 

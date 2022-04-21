@@ -116,3 +116,38 @@ color: var(--main-color) ;
     margin-top: 7px;
 }
 
+.profile-header{
+    display: flex;
+    background-color: var(--secondary-color);
+    color: var(--main-color);
+    justify-content: space-between;
+    align-items: center;
+    margin: 40px 0;
+}
+
+.edit-btn{
+    margin: auto;
+    padding: 10px 40px;
+    font-size: 18px;
+}
+
+.profile-info h6{
+    font-size: 20px !important;
+}
+
+.profile-progress{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    color: var(--main-color);
+}
+
+.progress-container{
+    display: flex;
+    justify-content: space-between;
+    padding: 50px 20px;
+    align-items: center;
+    background-color: var(--light-background-color);
+    color: var(--main-color);
+    border-radius: 2px;
+}

@@ -18,6 +18,12 @@ function Navigation(){
         navigate("/")
     }
 
+    useEffect(() => {
+        if(loading){
+            console.log("waiting user")
+        }
+    }, [user])
+
 
     return(
         <Navbar variant='light' collapseOnSelect expand="lg">

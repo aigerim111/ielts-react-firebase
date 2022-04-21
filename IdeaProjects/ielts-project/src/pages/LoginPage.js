@@ -5,20 +5,13 @@ import { Link, useNavigate } from "react-router-dom";
 
 function LoginPage(){
 
-    console.log(auth)
     const [loginEmail, setLoginEmail] = useState("");
     const [loginPassword, setLoginPassword] = useState("");
     const [user, loading, error] = useAuthState(auth);
     const navigate = useNavigate();
 
-    console.log(user)
-
-
     function login(){
-        logInWithEmailAndPassword(loginEmail, loginPassword)
-            .then(r => console.log(r.body));
-        console.log(auth);
-
+        logInWithEmailAndPassword(loginEmail, loginPassword);
         navigate("/")
     }
 
