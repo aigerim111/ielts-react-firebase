@@ -8,6 +8,7 @@
 :root{
     --main-color: #e38978;
     --secondary-color: #fff8;
+    --dark-color: #333;
     --light-background-color: #F9DCC4;
     --dark-background-color: #d16b58;
     --fa-border-color: var(--main-color) !important;
@@ -17,57 +18,87 @@
     --bs-table-striped-bg: var(--secondary-color) !important;
 }
 
-.container-info-section{
-background-color: var(--light-background-color);
-padding: 3rem;
-box-shadow: 0 1px 10px 1px rgba(34, 60, 80, 0.2);
-margin-bottom: 1.2rem;
+.flex-container{
+    display: flex;
 }
 
+.flex-container.center{
+    align-items: center;
+}
 
-.info-section{
-margin: auto;
-padding-top: 1.5rem;
-max-width: 70%;
+.container-section{
+    padding: 3rem;
+    box-shadow: 0 1px 10px 1px rgba(34, 60, 80, 0.2);
+    margin-bottom: 1.2rem;
+    background-color: var(--light-background-color);
+}
+
+.container-section.skills{
+    background-color: #fff;
+}
+
+.container-section.col{
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.row{
+    padding: 1.2rem;
+}
+
+.container-section-small{
+    width: 80%;
+}
+
+.section-img{
+    max-width: 400px;
+    max-height: 500px;
+    margin-right: 100px;
+}
+
+.section-text-block{
+    flex-direction: column;
+    margin: auto;
+}
+
+.section-text{
+    margin-top: 0.7rem;
+    font-size: 1.1rem;
+}
+
+.section-text a{
+    color: var(--dark-color) !important;
+    font-size: 1.1rem;
+    text-decoration: none;
 }
 
 .section-title{
-color: var(--main-color);
-font-weight: bold;
-font-size: 1.8rem;
+    color: var(--main-color);
+    font-weight: bold;
+    font-size: 2.5rem;
 }
 
-.section-info-text{
-color: #333;
-font-size: 1.05rem;
+.section-subtitle{
+    color: var(--main-color);
+    font-weight: bold;
+    font-size: 2rem;
 }
 
-.section-info-text a{
-color: #333 !important;
-font-size: 1.1rem;
-text-decoration: none;
+.black{
+    color: var(--dark-color);
 }
 
-.section-info-text a:hover{
-color: var(--main-color) !important;
+.btn.btn-primary{
+    background-color:var(--main-color);
+    color: var(--light-background-color) !important;
+    border: none;
+    padding: 10px;
+    font-size: 1.2rem;
 }
 
-.container-info-section .row{
-margin: auto;
-}
-
-.container-info-section .col a{
-display: flex;
-flex-direction: column;
-align-items: center;
-justify-content: center;
-color: #333;
-text-decoration: none;
-font-size: 1.2rem;
-}
-
-.container-info-section .col a:hover{
-transform: scale(1.1);
+.section-btn{
+    width: 50%;
+    font-size: 1.4rem!important;
 }
 
 .fa-headphones-simple, .fa-pencil, .fa-comment-dots{
@@ -84,13 +115,10 @@ color: var(--main-color) ;
 .auth {
     height: 100vh;
     width: 100vw;
-    display: flex;
-    align-items: center;
     justify-content: center;
 }
 
 .auth__container {
-    display: flex;
     flex-direction: column;
     text-align: center;
     background-color: var(--light-background-color);
@@ -117,7 +145,6 @@ color: var(--main-color) ;
 }
 
 .profile-header{
-    display: flex;
     background-color: var(--secondary-color);
     color: var(--main-color);
     justify-content: space-between;
@@ -126,7 +153,6 @@ color: var(--main-color) ;
 }
 
 .edit-btn{
-    margin: auto;
     padding: 10px 40px;
     font-size: 18px;
 }
@@ -136,18 +162,67 @@ color: var(--main-color) ;
 }
 
 .profile-progress{
-    display: flex;
     flex-direction: column;
     justify-content: space-around;
     color: var(--main-color);
 }
 
 .progress-container{
-    display: flex;
     justify-content: space-between;
     padding: 50px 20px;
-    align-items: center;
     background-color: var(--light-background-color);
     color: var(--main-color);
     border-radius: 2px;
+}
+
+.references-list{
+    display: grid;
+    gap: 30px;
+    grid-template-columns: 1fr 1fr;
+}
+
+.references-link{
+    justify-content: flex-start;
+    margin: 40px 0;
+    gap: 20px;
+}
+
+.references-link .section-text{
+    font-size: 1.5rem!important;
+    font-weight: bold;
+    color: var(--main-color);
+}
+
+.userimg{
+    width: 100px;
+    margin-right: 10px;
+}
+
+.section-text.test{
+    font-size: 1.2rem;
+}
+
+.test-btn{
+    width: 15%;
+}
+
+.result-text{
+    font-size: 1.3rem;
+    margin-top: 40px;
+}
+
+.right-answer-text{
+    margin-left: 15px;
+}
+
+@media (max-width: 768px){
+
+    .section-title{
+        font-size: 1.4rem;
+    }
+
+
+    .section-text{
+        font-size: .9rem;
+    }
 }

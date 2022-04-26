@@ -15,11 +15,3 @@
 .navbar-collapse{
     flex-grow: 0;
 }
-
-
-.btn.btn-primary{
-    background-color: #e38978;
-    color: #F9DCC4;
-    border: none;
-    margin: 0 5px;
-}

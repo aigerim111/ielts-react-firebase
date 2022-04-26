@@ -21,7 +21,7 @@ function RegistrationPage(){
     }
 
     return(
-        <div className="auth">
+        <div className="flex-container center auth">
             <div className="auth__container">
                 <input
                     type="text"

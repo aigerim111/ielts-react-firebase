@@ -16,8 +16,8 @@ function LoginPage(){
     }
 
     return(
-        <div className="auth">
-            <div className="auth__container">
+        <div className="flex-container center auth">
+            <div className="flex-container auth__container">
                 <input
                     type="text"
                     className="auth__textBox"

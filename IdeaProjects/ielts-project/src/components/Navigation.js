@@ -32,38 +32,11 @@ function Navigation(){
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                 <Nav className="me-auto">
-                        <Nav.Link href="/">Home</Nav.Link>
-                    <NavDropdown title="Listening" id="navbarScrollingDropdown">
-                        <NavDropdown.Item href="/listening">Listening</NavDropdown.Item>
-                        <NavDropdown.Item href="/listening-practice">Practice</NavDropdown.Item>
-                        <NavDropdown.Item href="/listening-tips">Tips</NavDropdown.Item>
-                    </NavDropdown>
-                    <NavDropdown title="Reading" id="navbarScrollingDropdown">
-                        <NavDropdown.Item href="/reading">Reading</NavDropdown.Item>
-                        <NavDropdown.Item href="/reading-academic-practice">Academic Practice</NavDropdown.Item>
-                        <NavDropdown.Item href="/reading-general-practice">General Practice</NavDropdown.Item>
-                        <NavDropdown.Item href="/reading-tips">Tips</NavDropdown.Item>
-                    </NavDropdown>
-                    <NavDropdown title="Writing" id="navbarScrollingDropdown">
-                        <NavDropdown.Item href="/writing">Writing</NavDropdown.Item>
-                        <NavDropdown.Item href="/writing-academic-task-1">Task 1 Academic</NavDropdown.Item>
-                        <NavDropdown.Item href="/writing-general-task-1">Task 1 General</NavDropdown.Item>
-                        <NavDropdown.Item href="/writing-essay">Task 2 (essay)</NavDropdown.Item>
-                        <NavDropdown.Item href="/writing-vocabulary">Vocabulary</NavDropdown.Item>
-                        <NavDropdown.Item href="/writing-tips">Tips</NavDropdown.Item>
-                    </NavDropdown>
-                    <NavDropdown title="Speaking" id="navbarScrollingDropdown">
-                        <NavDropdown.Item href="/speaking">Speaking</NavDropdown.Item>
-                        <NavDropdown.Item href="/speaking-practice">Practice</NavDropdown.Item>
-                        <NavDropdown.Item href="/speaking-vocabulary">Vocabulary</NavDropdown.Item>
-                        <NavDropdown.Item href="/speaking-tips">Tips</NavDropdown.Item>
-                    </NavDropdown>
-                    <NavDropdown title="Exercises" id="navbarScrollingDropdown">
-                        <NavDropdown.Item href="/listening-exercises">Speaking</NavDropdown.Item>
-                        <NavDropdown.Item href="/reading-exercises">Reading</NavDropdown.Item>
-                        <NavDropdown.Item href="/writing-exercises">Writing</NavDropdown.Item>
-                        <NavDropdown.Item href="/speaking-exercises">Speaking</NavDropdown.Item>
-                    </NavDropdown>
+                    <Nav.Link href="/">Home</Nav.Link>
+                    <Nav.Link href="/listening">Listening</Nav.Link>
+                    <Nav.Link href="/reading">Reading</Nav.Link>
+                    <Nav.Link href="/writing">Writing</Nav.Link>
+                    <Nav.Link href="/speaking">Speaking</Nav.Link>
 
                     {!user ? (
                         <>
@@ -73,6 +46,7 @@ function Navigation(){
                         )
                         : (
                             <>
+                                <Nav.Link href="/userpage">Profile</Nav.Link>
                                 <Button variant="primary" onClick={handleLogout}>Logout</Button>
                             </>
                         )
