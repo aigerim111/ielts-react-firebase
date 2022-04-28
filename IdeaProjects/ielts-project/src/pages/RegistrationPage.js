@@ -22,9 +22,9 @@ function RegistrationPage(){
 
     return(
         <div className="flex-container center auth">
-            <div className="auth__container">
+            <div className="flex-container auth__container">
                 <input
-                    type="text"
+                    type    ="text"
                     className="auth__textBox"
                     value={registerName}
                     onChange={(e) => setRegisterName(e.target.value)}

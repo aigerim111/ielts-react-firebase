@@ -119,7 +119,7 @@ color: var(--main-color) ;
 }
 
 .auth__container {
-    flex-direction: column;
+    flex-direction: column !important ;
     text-align: center;
     background-color: var(--light-background-color);
     padding: 30px;
