@@ -1,7 +1,8 @@
 import React, {useEffect, useState} from "react";
 import {Link, Route, useParams} from "react-router-dom";
 import {Button, Col, Container, Row} from "react-bootstrap";
-import TextAnswer from "./TextAnswer";
+import TestAnswer from "./TestAnswer";
+import testData from "../pages/dataTest"
 
 function TestForm(){
 
@@ -12,10 +13,16 @@ function TestForm(){
     const[checkAnswers, setCheckAnswers] = useState(false)
     const[result, setResult] = useState(0)
     const[showResult, setShowResult] = useState(false)
+    const[test, setTest] = useState(testData[id])
 
-    const answers = [
-        {id: 1, testQuestion: "What is the answer for this question? Guess!", options: ["True", "False", "Not given"], answerType: 'select', rightAnswer: "True"},
-        {id: 2, testQuestion: "Or find the right answer here? Guess!", answerType: "text", rightAnswer: "is not"}]
+    const [userData, setUserData] = useState({})
+
+    // const[text, setText] = useState(test.text)
+    // const[questions, setQuestions] = useState(test.questionList)
+
+    // const answers = [
+    //     {id: 1, testQuestion: "What is the answer for this question? Guess!", options: ["True", "False", "Not given"], answerType: 'select', rightAnswer: "True"},
+    //     {id: 2, testQuestion: "Or find the right answer here? Guess!", answerType: "text", rightAnswer: "is not"}]
 
     // async function getData(){
     //     await fetch("localhost:8080/test/params.section/"+params.testid)
@@ -31,13 +38,25 @@ function TestForm(){
     }
 
     //function to show all questions
-    const questionsToShow = answers.map(el => {
+    const questionsToShow = test && test.map(el => {
+        console.log(el);
         return (
-            <TextAnswer question = {el}
-                        checkAnswers = {checkAnswers}
-                        setResult = {setResult}
-                        result = {result}
-                        />
+            <>
+                <h4>TEXT: </h4>
+                <h6>{el.text}</h6>
+                {el.questionList && el.questionList.map(q => {
+                    return (
+                        <>
+                            <TestAnswer key = {q.id}
+                                        question = {q}
+                                        checkAnswers = {checkAnswers}
+                                        setResult = {setResult}
+                                        result = {result}
+                            />
+                        </>
+                    )
+                })}
+            </>
         )
     })
 
