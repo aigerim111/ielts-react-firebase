@@ -1,8 +1,9 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import {Link, Route, useParams} from "react-router-dom";
 import {Button, Col, Container, Row} from "react-bootstrap";
 import TestAnswer from "./TestAnswer";
 import testData from "../pages/dataTest"
+import { auth } from "../firebaseConfig"
 
 function TestForm(){
 
@@ -11,11 +12,12 @@ function TestForm(){
     const id = params.testid
 
     const[checkAnswers, setCheckAnswers] = useState(false)
+    const[isSubmit, setIsSubmit] = useState(false)
     const[result, setResult] = useState(0)
     const[showResult, setShowResult] = useState(false)
     const[test, setTest] = useState(testData[id])
 
-    const [userData, setUserData] = useState({})
+    const [userData, setUserData] = useState({userAnswerList: [], userId: "", userResult: result})
 
     // const[text, setText] = useState(test.text)
     // const[questions, setQuestions] = useState(test.questionList)
@@ -28,18 +30,30 @@ function TestForm(){
     //     await fetch("localhost:8080/test/params.section/"+params.testid)
     // }
 
+    const firstRun = useRef(true)
+    useEffect(() => {
+        if(firstRun.current){
+            firstRun.current = false
+            return;
+        }
+
+        console.log(result)
+        setUserData({...userData, userResult: result})
+    }, [result])
+
     //after submitting answers, it calls checkAnswers to alert child components to call them check chosen options
     //and after sets result to zero to discard any conflict
     const handleCheck = () => {
         setCheckAnswers(prev => !prev)
-        console.log("Result after checking" + result)
         setShowResult(true)
-        setResult(0)
+    }
+
+    const handleSubmit = () => {
+        console.log(userData)
     }
 
     //function to show all questions
     const questionsToShow = test && test.map(el => {
-        console.log(el);
         return (
             <>
                 <h4>TEXT: </h4>
@@ -51,7 +65,8 @@ function TestForm(){
                                         question = {q}
                                         checkAnswers = {checkAnswers}
                                         setResult = {setResult}
-                                        result = {result}
+                                        userData = {userData}
+                                        setUserData = {setUserData}
                             />
                         </>
                     )
@@ -73,7 +88,8 @@ function TestForm(){
                                     {questionsToShow}
                                 </p>
 
-                                <Button variant="primary" onClick={handleCheck} className="test-btn">Submit</Button>
+                                <Button variant="primary" onClick={handleCheck} className="test-btn">Check</Button>
+                                {userData.userAnswerList.length === 39 && <Button variant="primary" onClick={handleSubmit} className="test-btn mt-2">Submit</Button>}
                                 {showResult && <h6 className="result-text">Your result: {result}</h6>}
                             </Container>
                         </Container>
