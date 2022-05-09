@@ -7,6 +7,11 @@ import { Link, useParams } from "react-router-dom";
 function References(){
     const params = useParams()
     const[sectionName, setSectionName] = useState(params.section)
+    const readingLinkList = ["tAlhuWdpeti2DcFNUw5k", "uHJdJEEwdeBSUB7RdtuX"]
+    const listeningLinkList = ["93XDaqIUkCUMp8yvIk6X", "YTPIa5bXz3BhksarLhD1"]
+    const writingLinkList = ["QPxPL6WicLzbfli3OIRc", "bKm5zoFjMn0VSiZKZr9Q"]
+    const speakingLinkList = ["2HmrqCTfLySgrCY0zqxX", "IchI7A9VyPIIem3pbEMO"]
+
 
 
     return(
@@ -21,24 +26,46 @@ function References(){
                     </Container>
                     <h2 className="section-subtitle black">References:</h2>
                     <div className="references-list">
-                        <Link to = "1">
-                            <div className="flex-container center references-link">
-                                <FontAwesomeIcon icon="fa-solid fa-headphones-simple"  size='4x' className='style-icon' border/>
-                                <bold><p className="section-text">{sectionName} Test 1</p></bold>
-                            </div>
-                        </Link>
-                        <div className="flex-container center references-link">
-                            <FontAwesomeIcon icon="fa-solid fa-headphones-simple"  size='4x' className='style-icon' border/>
-                            <bold><p className="section-text">{sectionName} Test 1</p></bold>
-                        </div>
-                        <div className="flex-container center references-link">
-                            <FontAwesomeIcon icon="fa-solid fa-headphones-simple"  size='4x' className='style-icon' border/>
-                            <bold><p className="section-text">{sectionName} Test 1</p></bold>
-                        </div>
-                        <div className="flex-container center references-link">
-                            <FontAwesomeIcon icon="fa-solid fa-headphones-simple"  size='4x' className='style-icon' border/>
-                            <bold><p className="section-text">{sectionName} Test 1</p></bold>
-                        </div>
+                        {sectionName === "Reading" && readingLinkList.map((el, index) => (
+                            <Link to = {el}>
+                                <div className="flex-container center references-link">
+                                    <FontAwesomeIcon icon="fa-solid fa-headphones-simple" size='4x'
+                                                     className='style-icon' border/>
+                                    <bold><p className="section-text">{sectionName} Test {index}</p></bold>
+                                </div>
+                            </Link>
+                            ))
+                        }
+                        {sectionName === "Listening" && listeningLinkList.map((el, index) => (
+                            <Link to = {el}>
+                                <div className="flex-container center references-link">
+                                    <FontAwesomeIcon icon="fa-solid fa-headphones-simple" size='4x'
+                                                     className='style-icon' border/>
+                                    <bold><p className="section-text">{sectionName} Test {index}</p></bold>
+                                </div>
+                            </Link>
+                        ))
+                        }
+                        {sectionName === "Writing" && writingLinkList.map((el, index) => (
+                            <Link to = {el}>
+                                <div className="flex-container center references-link">
+                                    <FontAwesomeIcon icon="fa-solid fa-headphones-simple" size='4x'
+                                                     className='style-icon' border/>
+                                    <bold><p className="section-text">{sectionName} Test {index}</p></bold>
+                                </div>
+                            </Link>
+                        ))
+                        }
+                        {sectionName === "Speaking" && speakingLinkList.map((el, index) => (
+                            <Link to = {el}>
+                                <div className="flex-container center references-link">
+                                    <FontAwesomeIcon icon="fa-solid fa-headphones-simple" size='4x'
+                                                     className='style-icon' border/>
+                                    <bold><p className="section-text">{sectionName} Test {index}</p></bold>
+                                </div>
+                            </Link>
+                        ))
+                        }
                     </div>
                 </Container>
             </Container>

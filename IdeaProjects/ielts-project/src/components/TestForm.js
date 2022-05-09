@@ -2,22 +2,22 @@ import React, {useEffect, useRef, useState} from "react";
 import {Link, Route, useParams} from "react-router-dom";
 import {Button, Col, Container, Row} from "react-bootstrap";
 import TestAnswer from "./TestAnswer";
-import testData from "../pages/dataTest"
-import { auth } from "../firebaseConfig"
+import reading from "../pages/readingData";
+import listening from "../pages/listeningData"
+import writing from "../pages/writingData";
+import speaking from "../pages/speakingData";
 
 function TestForm(){
 
     const params = useParams()
     const sectionName = params.section
-    const id = params.testid
 
     const[checkAnswers, setCheckAnswers] = useState(false)
-    const[isSubmit, setIsSubmit] = useState(false)
     const[result, setResult] = useState(0)
     const[showResult, setShowResult] = useState(false)
-    const[test, setTest] = useState(testData[id])
+    const[test, setTest] = useState([])
 
-    const [userData, setUserData] = useState({userAnswerList: [], userId: "", userResult: result})
+    const [userData, setUserData] = useState({userAnswerList: [], userId: "", userResult: result, section: sectionName})
 
     // const[text, setText] = useState(test.text)
     // const[questions, setQuestions] = useState(test.questionList)
@@ -33,6 +33,20 @@ function TestForm(){
     const firstRun = useRef(true)
     useEffect(() => {
         if(firstRun.current){
+            switch (sectionName){
+                case "Reading":
+                    setTest(Object.values(reading))
+                    break
+                case "Listening":
+                    setTest(Object.values(listening))
+                    break;
+                case "Writing":
+                    setTest(Object.values(writing))
+                    break
+                case "Speaking":
+                    setTest(Object.values(speaking))
+                    break;
+            }
             firstRun.current = false
             return;
         }
@@ -56,12 +70,11 @@ function TestForm(){
     const questionsToShow = test && test.map(el => {
         return (
             <>
-                <h4>TEXT: </h4>
-                <h6>{el.text}</h6>
-                {el.questionList && el.questionList.map(q => {
-                    return (
+                {sectionName === "Listening" && <h2>Task: <audio controls src={el.audio}>Audio Task</audio></h2>}
+                {sectionName === "Reading" && <h5><span className="fw-bold fs-3">Task:</span>  {el.text}</h5>}
+                {el.questionList ? el.questionList.map(q => (
                         <>
-                            <TestAnswer key = {q.id}
+                            <TestAnswer
                                         question = {q}
                                         checkAnswers = {checkAnswers}
                                         setResult = {setResult}
@@ -70,7 +83,13 @@ function TestForm(){
                             />
                         </>
                     )
-                })}
+                ) : el.map(sample => (
+                    <>
+                        <p className="mb-1">{sample.qs}</p>
+                        <p className="mb-3 px-4">{sample.answer}</p>
+                    </>
+                ))
+                }
             </>
         )
     })
@@ -83,7 +102,7 @@ function TestForm(){
                     <Col className="align-self-start">
                         <Container className="container-section-small">
                             <Container className="flex-container section-text-block skills">
-                                <h2 className='section-title'>{sectionName} test.{id}</h2>
+                                <h2 className='section-title'>{sectionName} test</h2>
                                 <p className='section-text test'>
                                     {questionsToShow}
                                 </p>
