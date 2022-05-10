@@ -215,6 +215,10 @@ color: var(--main-color) ;
     margin-left: 15px;
 }
 
+.div-link{
+    cursor: pointer;
+}
+
 @media (max-width: 768px){
 
     .section-title{

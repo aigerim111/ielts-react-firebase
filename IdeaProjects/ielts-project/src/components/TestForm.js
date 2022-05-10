@@ -11,13 +11,14 @@ function TestForm(){
 
     const params = useParams()
     const sectionName = params.section
+    const testLink = params.testid
 
     const[checkAnswers, setCheckAnswers] = useState(false)
     const[result, setResult] = useState(0)
     const[showResult, setShowResult] = useState(false)
     const[test, setTest] = useState([])
 
-    const [userData, setUserData] = useState({userAnswerList: [], userId: "", userResult: result, section: sectionName})
+    const [userData, setUserData] = useState({userAnswerList: [], userId: "", userResult: result, section: sectionName, link: testLink})
 
     // const[text, setText] = useState(test.text)
     // const[questions, setQuestions] = useState(test.questionList)
@@ -53,6 +54,7 @@ function TestForm(){
 
         console.log(result)
         setUserData({...userData, userResult: result})
+        console.log(userData)
     }, [result])
 
     //after submitting answers, it calls checkAnswers to alert child components to call them check chosen options
@@ -60,6 +62,7 @@ function TestForm(){
     const handleCheck = () => {
         setCheckAnswers(prev => !prev)
         setShowResult(true)
+        console.log(userData)
     }
 
     const handleSubmit = () => {
@@ -108,7 +111,7 @@ function TestForm(){
                                 </p>
 
                                 <Button variant="primary" onClick={handleCheck} className="test-btn">Check</Button>
-                                {userData.userAnswerList.length === 39 && <Button variant="primary" onClick={handleSubmit} className="test-btn mt-2">Submit</Button>}
+                                {userData.userAnswerList.length === 40 && <Button variant="primary" onClick={handleSubmit} className="test-btn mt-2">Submit</Button>}
                                 {showResult && <h6 className="result-text">Your result: {result}</h6>}
                             </Container>
                         </Container>

@@ -3,7 +3,8 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../firebaseConfig"
 import { Button, Container, Image } from "react-bootstrap";
 import EditUserModal from "../components/EditUserModal";
-import { useNavigate } from "react-router-dom";
+import userData from "./userData";
+import {useNavigate} from "react-router-dom";
 
 
 function PersonalPage() {
@@ -13,7 +14,8 @@ function PersonalPage() {
     const [name, setName] = useState("")
     const [email, setEmail] = useState("")
     const [dataError, setDataError] = useState("")
-    const navigate = useNavigate();
+
+    const navigator = useNavigate()
 
     const [editUser, isEditUser] = useState(false);
     const [userChange, setUserChange] = useState(false)
@@ -34,6 +36,10 @@ function PersonalPage() {
             }
         })
     }, [user, userChange]);
+
+    const handleClick = (sectionName, testLink) => {
+        navigator(`/references/${sectionName}/${testLink}`)
+    }
 
     return (
         <div>
@@ -59,10 +65,12 @@ function PersonalPage() {
                 </div>
                 <div className="flex-container profile-progress">
                     <h2>Progress:</h2>
-                    <div className="flex-container center progress-container">
-                        <h3>Reading</h3>
-                        <h5>9/10</h5>
-                    </div>
+                    {userData && userData.map(el => (
+                        <div className="flex-container center progress-container div-link" onClick={() => handleClick(el.section, el.testLink)}>
+                            <h3>{el.section}</h3>
+                            <h5>{el.userResult} / 40</h5>
+                        </div>
+                    ))}
                 </div>
             </Container>
         </div>
